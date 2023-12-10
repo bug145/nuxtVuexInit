@@ -1,0 +1,26 @@
+{
+  "name": "nuxt-server-client-init",
+  "version": "1.0.1",
+  "description": "add auto run actions nuxtClientInit nuxtServerInit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bug145/nuxtVuexInit.git"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "nuxtServerInit",
+    "nuxtClientInit",
+    "vuex"
+  ],
+  "author": "Bagdaulet Saiyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bug145/nuxtVuexInit/issues"
+  },
+  "homepage": "https://github.com/bug145/nuxtVuexInit#readme"
+}
