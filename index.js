@@ -1,32 +1,15 @@
-import { chain } from 'lodash';
+import { defu } from 'defu';
+import { resolve } from 'path';
 
-export default async ({ store }) => {
-  const actions = Object.keys(store._actions);
-  const clientInitActions = chain(actions)
-    .map((val) => {
-      if (/\/?nuxtClientInit/.test(val)) {
-        return val;
-      }
-      return null;
-    })
-    .compact()
-    .map((action) => store.dispatch(action))
-    .value();
+export default async function installer() {
+  this.options.build = defu({ transpile: ['nuxt-server-client-init'] }, this.options.build);
 
-  const serverInitActions = chain(actions)
-    .map((val) => {
-      if (/\/?nuxtServerInit/.test(val)) {
-        return val;
-      }
-      return null;
-    })
-    .compact()
-    .map((action) => store.dispatch(action))
-    .value();
+  this.nuxt.hook('ready', async nuxt => {
+    await this.addPlugin({
+      src: resolve(__dirname, 'plugin.js'),
+      fileName: 'nuxt-server-client-init/vuex.plugin.module.js',
+    });
+  })
+}
 
-  if (process.client) {
-    await Promise.all(clientInitActions);
-  } else {
-    await Promise.all(serverInitActions);
-  }
-};
+module.exports.meta = require('./package.json');
