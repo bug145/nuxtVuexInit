@@ -1,6 +1,6 @@
 {
   "name": "nuxt-server-client-init",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "add auto run actions nuxtClientInit nuxtServerInit",
   "main": "index.js",
   "scripts": {
